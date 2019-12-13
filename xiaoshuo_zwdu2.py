@@ -31,9 +31,12 @@ def xiaoshuo_zj(url,xiaoshuo_name):
 
    # 去除HTML标签
    dr = re.compile(r'<[^>]+>', re.S)
-   xiaoshuo_zhangjie_name = dr.sub('', str(xiaoshuo_zhangjie_name0))
+   xiaoshuo_zhangjie_name1 = dr.sub('', str(xiaoshuo_zhangjie_name0))
+   xiaoshuo_zhangjie_name2 = xiaoshuo_zhangjie_name1.split('\n',)
+   xiaoshuo_zhangjie_name = xiaoshuo_zhangjie_name2[1]
 
-   xiaoshuo_txt = dr.sub('', str(xiaoshuo_txt0))
+   xiaoshuo_txt1 = str(xiaoshuo_txt0).replace('<br/><br/>', "\n")
+   xiaoshuo_txt = dr.sub('', str(xiaoshuo_txt1))
    xiaoshuo_all = str(xiaoshuo_zhangjie_name) + '\n' + str(xiaoshuo_txt) + '\n' + '\n'
 
    f = open(xiaoshuo_name+'.txt', 'a+',encoding='utf8')
